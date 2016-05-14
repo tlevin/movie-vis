@@ -9,7 +9,7 @@
         </select><br>
         Year: <select name="releasedate"
           ng-model="main.selectedYear"
-          ng-options="year in main.years">
+          ng-options="year for year in main.years">
         </select><br>
         Actor: <input type="text" ng-model="main.selectedActor"></input><br>
       </fieldset>
