@@ -1,0 +1,29 @@
+<div class="dashboard">
+  <div class="side-menu">
+    <form ng-submit="main.buildChart()">
+      <fieldset>
+        <legend>Find Movie by:</legend>
+        Genre: <select name="genre"
+          ng-model="main.selectedGenre"
+          ng-options="genre.name for genre in main.genres">
+        </select><br>
+        Year: <select name="releasedate"
+          ng-model="main.selectedYear"
+          ng-options="year in main.years">
+        </select><br>
+        Actor: <input type="text" ng-model="main.selectedActor"></input><br>
+      </fieldset>
+      <fieldset>
+        <legend>Sort by:</legend>
+        Revenue: <input ng-model="main.sortRevenue"type="checkbox"><br>
+        Popularity: <input ng-model="main.sortPopular" type="checkbox"><br> 
+        User Rating: <input ng-model="main.sortRating" type="checkbox">
+      </fieldset>
+      <button ng-click="main.resetChoices()">Reset</button>
+      <button ng-click="main.buildChart()">Submit</button>
+    </form>
+  </div>
+  <div class="chart container">
+    <highchart config="main.chartOptions"></highchart>
+  </div>
+</div>
