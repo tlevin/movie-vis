@@ -15,9 +15,10 @@
       </fieldset>
       <fieldset>
         <legend>Sort by:</legend>
-        Revenue: <input ng-model="main.sortRevenue"type="checkbox"><br>
-        Popularity: <input ng-model="main.sortPopular" type="checkbox"><br> 
-        User Rating: <input ng-model="main.sortRating" type="checkbox">
+        Revenue: <input value="revenue" ng-model="main.sortBy" type="radio"><br>
+        Popularity: <input value="popularity" ng-model="main.sortBy" type="radio"><br> 
+        User Rating: <input value="vote_average" ng-model="main.sortBy" type="radio"><br>
+        Reverse? <input type="checkbox" ng-model="main.asc">
       </fieldset>
       <button ng-click="main.resetChoices()">Reset</button>
       <button ng-click="main.buildChart()">Submit</button>

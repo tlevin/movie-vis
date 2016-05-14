@@ -21,16 +21,30 @@ angular.module 'moviesVisualizerApp'
     vm.resetChoices = ->
       vm.selectedYear = null
       vm.selectedGenre = null
-      vm.sortRating = false
-      vm.sortPopular = false
-      vm.sortRevenue = false
+      vm.sortBy = 'revenue'
     
     vm.buildChart = ->
-      queryString = '' 
-      if vm.selectedGenre not null
+      queryString = ''
+      quality = if vm.asc then 'Worst' else 'Best' 
+      title = quality + ' Movies'
+      order = if vm.asc then '.asc' else '.desc'
+      if vm.selectedGenre
         queryString += '&with_genres=' + vm.selectedGenre.id
-      if vm.selectedYear not null
+        title = quality + ' ' + vm.selectedGenre.name + ' Movies'
+      if vm.selectedYear
+        title += ' in ' + vm.selectedYear
         queryString += '&primary_release_year=' + vm.selectedYear
+      queryString += '&sort_by='+ vm.sortBy + order
+      if vm.sortBy is 'revenue'  or 'popularity'
+        title += ' by ' + vm.sortBy[0].toUpperCase() + vm.sortBy.slice(1)
+      else if vm.sortBy is 'vote_average'
+        title += ' by User Rating'
+
+        # Eliminates high vote averages that do not have a large count
+        queryString += '&vote_count.gte=100'
+
+      chartFactory.buildChart(queryString, title).then (chart) ->
+        vm.chartOptions = chart
 
     vm.years = [2016..1920]
 
