@@ -13,6 +13,7 @@ angular.module 'moviesVisualizerApp'
 
     vm.init = ->  
       chartFactory.buildGenrePie().then (chart) ->
+        console.log chart
         vm.chartOptions = chart
     vm.init()
     return

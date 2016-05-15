@@ -21,20 +21,42 @@ angular.module 'moviesVisualizerApp'
           while i < res.genres.length
             vm.genres[res.genres[i].id] = res.genres[i].name
             i++
+          
           apiFactory.retrieveData(baseUrl, '&sort_by=revenue.desc').then (res) ->
-            # Create hash of genre count in top movies
+            
+            # Create hash of genre counts in top movies
             genresHash = {}
             result = res.results
 
             result.forEach (item) ->
               item.genre_ids.forEach (genreid) ->
                 genresHash[vm.genres[genreid]] = genresHash[vm.genres[genreid]] + 1 or 1
-
-            names = []
-            values = []
+            
+            # Build array of pie segments
+            data = []
             for genres of genresHash
-              names.push genres
-              values.push genresHash[genres]
+              genreNode = [genres, genresHash[genres]]
+              data.push genreNode
+
+            # Returns chart config file for pie chart
+            {
+              chart:
+                type: 'pie'
+                plotShadow: true
+              plotOptions:
+                pie:
+                  allowPointSelect: true
+                  cursor: 'pointer'
+              title:
+                text: 'Distribution of Genres in Top Movies'
+              series: [
+                name: 'Movies'
+                type: 'pie'
+                colorByPoint: true
+                data: data
+              ]
+            }
+
       buildChart: (queryString, chartTitle) ->
         baseUrl = 'http://api.themoviedb.org/3/discover/movie?api_key='
         # Fetches search data based on query
