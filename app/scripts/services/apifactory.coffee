@@ -26,6 +26,7 @@ angular.module('moviesVisualizerApp').factory 'apiFactory', ($http) ->
       $http(
         method: 'GET'
         url: baseURL + apiKey + querystring).then (response) ->
-        response.data
+          console.log response.data
+          response.data
 
   }

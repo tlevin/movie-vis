@@ -1,24 +1,54 @@
 body {
-  padding: 0
+  padding: 0;
+  background-color: #ccc;
 }
+h1 {
+  margin: 0;
+  padding: 0;
+}
+.navbar-brand-centered {
+    position: absolute;
+    left: 50%;
+    display: block;
+    width: 160px;
+    text-align: center;
+    background-color: transparent;
+}
+.navbar>.container .navbar-brand-centered, 
+.navbar>.container-fluid .navbar-brand-centered {
+    margin-left: -80px;
+}
+
 
 .brand {
   display: flex;
-  justify-content: center;
+  background-color: #ccc;
+  border-bottom: 2px solid black;
 }
 .dashboard {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
-.chart {
-  height: 100%;
-}
-
 .side-menu {
   background-color: #ccc;
+  padding: 2px;
+  display: flex;
+}
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+fieldset {
+  margin: 15px;
+  
+}
+.chart {
+  width: 95%;
+  margin-bottom: 20px;
 }
 
 @media screen and (min-width: 768px){
-  .dashboard {
-  }     
 }

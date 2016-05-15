@@ -22,6 +22,7 @@ angular.module 'moviesVisualizerApp'
       vm.selectedYear = null
       vm.selectedGenre = null
       vm.sortBy = 'revenue'
+      vm.asc = false
     
     vm.buildChart = ->
       queryString = ''
@@ -35,9 +36,9 @@ angular.module 'moviesVisualizerApp'
         title += ' in ' + vm.selectedYear
         queryString += '&primary_release_year=' + vm.selectedYear
       queryString += '&sort_by='+ vm.sortBy + order
-      if vm.sortBy is 'revenue'  or 'popularity'
+      if vm.sortBy is 'revenue' or vm.sortBy is 'popularity'
         title += ' by ' + vm.sortBy[0].toUpperCase() + vm.sortBy.slice(1)
-      else if vm.sortBy is 'vote_average'
+      if vm.sortBy is 'vote_average'
         title += ' by User Rating'
 
         # Eliminates high vote averages that do not have a large count
