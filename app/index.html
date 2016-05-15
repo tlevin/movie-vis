@@ -36,8 +36,8 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="navbar-brand-centered">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Link</a></li>
-            <li><a href="#">Link</a></li>
+            <li><a ng-href="#/popularactors">Popular Actors</a></li>
+            <li><a href="#/">Dynamic Charting</a></li>
             <li><a href="#">Link</a></li>           
           </ul>
         </div><!-- /.navbar-collapse -->
@@ -70,6 +70,7 @@
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js"></script>
     <script src="bower_components/highcharts/highcharts.js"></script>
+    <script src="bower_components/highcharts/modules/treemap.js"></script>
     <script src="bower_components/highcharts/highcharts-more.js"></script>
     <script src="bower_components/highcharts/modules/exporting.js"></script>
     <script src="bower_components/highcharts-ng/dist/highcharts-ng.js"></script>
@@ -79,10 +80,10 @@
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
-        <script src="scripts/controllers/about.js"></script>
         <script src="scripts/services/apifactory.js"></script>
         <script src="scripts/services/chartservice.js"></script>
         <script src="scripts/services/chartfactory.js"></script>
+        <script src="scripts/controllers/popularactors.js"></script>
         <!-- endbuild -->
 </body>
 </html>

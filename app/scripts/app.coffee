@@ -22,6 +22,10 @@ angular
         templateUrl: 'views/main.html'
         controller: 'MainCtrl'
         controllerAs: 'main'
+      .when '/popularactors',
+        templateUrl: 'views/popularactors.html'
+        controller: 'PopularactorsCtrl'
+        controllerAs: 'popularactors'
       .otherwise
         redirectTo: '/'
 
