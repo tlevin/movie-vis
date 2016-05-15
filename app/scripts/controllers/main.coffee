@@ -10,6 +10,7 @@
 angular.module 'moviesVisualizerApp'
   .controller 'MainCtrl', (apiFactory, chartFactory) ->
     vm = @
+    vm.sortBy = 'revenue'
     vm.init = ->
       apiFactory.fetchGenres().then (res) -> 
         vm.genres = res.genres

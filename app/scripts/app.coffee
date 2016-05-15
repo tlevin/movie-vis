@@ -26,6 +26,10 @@ angular
         templateUrl: 'views/popularactors.html'
         controller: 'PopularactorsCtrl'
         controllerAs: 'popularactors'
+      .when '/topgenres',
+        templateUrl: 'views/topgenres.html'
+        controller: 'TopgenresCtrl'
+        controllerAs: 'topgenres'
       .otherwise
         redirectTo: '/'
 
