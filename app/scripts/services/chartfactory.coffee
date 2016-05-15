@@ -9,8 +9,32 @@
 ###
 angular.module 'moviesVisualizerApp'
   .factory 'chartFactory', (apiFactory) ->
-    
+    vm = @
     {
+      buildGenrePie: ->
+        apiFactory.fetchGenres().then (res) ->
+          baseUrl = 'http://api.themoviedb.org/3/discover/movie?api_key='
+
+        # Build hash of genres with id as key, name as value
+          vm.genres = {}
+          i = 0
+          while i < res.genres.length
+            vm.genres[res.genres[i].id] = res.genres[i].name
+            i++
+          apiFactory.retrieveData(baseUrl, '&sort_by=revenue.desc').then (res) ->
+            # Create hash of genre count in top movies
+            genresHash = {}
+            result = res.results
+
+            result.forEach (item) ->
+              item.genre_ids.forEach (genreid) ->
+                genresHash[vm.genres[genreid]] = genresHash[vm.genres[genreid]] + 1 or 1
+
+            names = []
+            values = []
+            for genres of genresHash
+              names.push genres
+              values.push genresHash[genres]
       buildChart: (queryString, chartTitle) ->
         baseUrl = 'http://api.themoviedb.org/3/discover/movie?api_key='
         # Fetches search data based on query

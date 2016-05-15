@@ -8,10 +8,11 @@
  # Controller of the moviesVisualizerApp
 ###
 angular.module 'moviesVisualizerApp'
-  .controller 'TopgenresCtrl', ->
-    @awesomeThings = [
-      'HTML5 Boilerplate'
-      'AngularJS'
-      'Karma'
-    ]
+  .controller 'TopgenresCtrl', (apiFactory, chartFactory) ->
+    vm = @
+
+    vm.init = ->  
+      chartFactory.buildGenrePie().then (chart) ->
+        vm.chartOptions = chart
+    vm.init()
     return
