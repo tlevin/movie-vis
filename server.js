@@ -1,9 +1,8 @@
-var Express = require('express');
+var gzippo = require('gzippo');
+var express = require('express');
+var morgan = require('morgan');
+var app = express();
 
-var app = Express();
-
-app.use(Express.static(__dirname + '/dist'));
-
-var server = app.listen(3000, function() {
-  console.log('Express server running.')
-})
+app.use(morgan('dev'));
+app.use(gzippo.staticGzip("" + __dirname + "/dist"));
+app.listen(process.env.PORT || 5000);
