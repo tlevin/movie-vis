@@ -36,9 +36,15 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="navbar-brand-centered">
           <ul class="nav navbar-nav navbar-right">
-            <li><a ng-href="#/popularactors">Popular Actors</a></li>
-            <li><a href="#/">Dynamic Charting</a></li>
-            <li><a href="#/topgenres">Top Genres</a></li>           
+            <li class="dropdown" ng-class="{ open : dd1 }" ng-init="dd1 = false" ng-click="dd1 = !dd1">
+              <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Movie Visualizations <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a ng-href="#/popularactors">Popular Actors</a></li>
+                <li><a href="#/">Dynamic Charting</a></li>
+                <li><a href="#/topgenres">Top Genres</a></li>           
+              </ul>
+            </li>
+        
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
@@ -86,6 +92,7 @@
         <script src="scripts/services/chartfactory.js"></script>
         <script src="scripts/controllers/popularactors.js"></script>
         <script src="scripts/controllers/topgenres.js"></script>
+        <script src="scripts/controllers/topintheaters.js"></script>
         <!-- endbuild -->
 </body>
 </html>
