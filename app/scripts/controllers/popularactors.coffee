@@ -11,7 +11,7 @@ angular.module 'moviesVisualizerApp'
   .controller 'PopularactorsCtrl', (chartFactory) ->
     vm = @
     vm.init = ->
-      chartFactory.buildHeatMap().then (res) ->
+      chartFactory.buildTreeMap().then (res) ->
         vm.chartOptions = res
 
     vm.init()

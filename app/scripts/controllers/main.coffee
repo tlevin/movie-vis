@@ -16,8 +16,7 @@ angular.module 'moviesVisualizerApp'
         vm.genres = res.genres
 
       # Default view is with all years, all genres, sorted by revenue
-      chartFactory.buildChart('&sort_by=revenue.desc', 'Highest Revenue Movies').then (chart) ->
-        vm.chartOptions = chart
+      vm.buildChart()
 
     vm.resetChoices = ->
       vm.selectedYear = null
@@ -30,6 +29,8 @@ angular.module 'moviesVisualizerApp'
       quality = if vm.asc then 'Worst' else 'Best' 
       title = quality + ' Movies'
       order = if vm.asc then '.asc' else '.desc'
+
+      # Build Querystring and conditional title
       if vm.selectedGenre
         queryString += '&with_genres=' + vm.selectedGenre.id
         title = quality + ' ' + vm.selectedGenre.name + ' Movies'
@@ -41,12 +42,12 @@ angular.module 'moviesVisualizerApp'
         title += ' by ' + vm.sortBy[0].toUpperCase() + vm.sortBy.slice(1)
       if vm.sortBy is 'vote_average'
         title += ' by User Rating'
-
         # Eliminates high vote averages that do not have a large count
         queryString += '&vote_count.gte=100'
 
-      chartFactory.buildChart(queryString, title).then (chart) ->
-        vm.chartOptions = chart
+      # Fetches data and builds chart config
+      apiFactory.retrieveData('http://api.themoviedb.org/3/discover/movie?api_key=', queryString).then (data) ->
+        vm.chartOptions = chartFactory.buildChart(data, title)
 
     vm.years = [2016..1920]
 

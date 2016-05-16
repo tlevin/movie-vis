@@ -30,6 +30,10 @@ angular
         templateUrl: 'views/topgenres.html'
         controller: 'TopgenresCtrl'
         controllerAs: 'topgenres'
+      .when '/topintheaters',
+        templateUrl: 'views/topintheaters.html'
+        controller: 'TopintheatersCtrl'
+        controllerAs: 'topintheaters'
       .otherwise
         redirectTo: '/'
 
