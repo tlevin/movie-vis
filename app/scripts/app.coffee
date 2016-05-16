@@ -34,6 +34,10 @@ angular
         templateUrl: 'views/topintheaters.html'
         controller: 'TopintheatersCtrl'
         controllerAs: 'topintheaters'
+      .when '/topupcoming',
+        templateUrl: 'views/topupcoming.html'
+        controller: 'TopupcomingCtrl'
+        controllerAs: 'topupcoming'
       .otherwise
         redirectTo: '/'
 

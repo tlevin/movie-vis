@@ -13,13 +13,6 @@ angular.module('moviesVisualizerApp').factory 'apiFactory', ($http) ->
   # to hide such things
   apiKey = 'd0856d87f087ed9f0e0b2268d5a226f2'
   {
-    fetchInTheaters: ->
-      $http(
-        method: 'GET'
-        url: 'http://api.themoviedb.org/3/movie/now_playing?api_key=' + apiKey
-        ).then (response) ->
-          response.data
-
     fetchGenres: ->
       $http(
         method: 'GET'
