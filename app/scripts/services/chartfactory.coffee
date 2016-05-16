@@ -64,9 +64,9 @@ angular.module 'moviesVisualizerApp'
         result = data.results
         # Builds arrays for use in chart
         result.forEach (movie) ->
-          popular.push(movie.popularity)
-          ratings.push(movie.vote_average)
-          titles.push(movie.original_title)
+          popular.push movie.popularity
+          ratings.push movie.vote_average
+          titles.push movie.original_title
           return
         # Returns chart config file
         {
