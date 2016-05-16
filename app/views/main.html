@@ -2,33 +2,31 @@
   <div class="chart">
     <highchart config="main.chartOptions"></highchart>
   </div>
-    <div class="side-menu well">
-      <form class="controls" ng-submit="main.buildChart()">
-        <fieldset>
-          <legend>Find Movie by:</legend>
-          Genre: <select class="form-control"
-            name="genre"
-            ng-model="main.selectedGenre"
-            ng-options="genre.name for genre in main.genres">
-          </select>
-          Year: <select class="form-control"
-            name="releasedate"
-            ng-model="main.selectedYear"
-            ng-options="year for year in main.years">
-          </select>
-        </fieldset>
-        <fieldset>
-          <legend>Sort by:</legend>
-          Revenue: <input class="" value="revenue" ng-model="main.sortBy" type="radio"><br>
-          Popularity: <input value="popularity" ng-model="main.sortBy" type="radio"><br>
-          Rating: <input value="vote_average" ng-model="main.sortBy" type="radio"><br>
-          Reverse? <input type="checkbox" ng-model="main.asc"><br>
-      <div class="input-group">
-        <button class="btn btn-danger" ng-click="main.resetChoices()">Reset</button>
-        <button class="btn btn-primary" ng-click="main.buildChart()">Submit</button>
-      </div>
-        </fieldset>
-        </div>
-      </form>
+  <form class="side-menu" ng-submit="main.buildChart()">
+    <fieldset class="form-group">
+      <legend>Find Movie by:</legend>
+      Genre: <select class="form-control"
+        name="genre"
+        ng-model="main.selectedGenre"
+        ng-options="genre.name for genre in main.genres">
+      </select>
+      Year: <select class="form-control"
+        name="releasedate"
+        ng-model="main.selectedYear"
+        ng-options="year for year in main.years">
+      </select>
+    </fieldset>
+    <fieldset class="sort">
+      <legend>Sort by:</legend>
+      Revenue: <input class="" value="revenue" ng-model="main.sortBy" type="radio"><br>
+      Popularity: <input value="popularity" ng-model="main.sortBy" type="radio"><br>
+      Rating: <input value="vote_average" ng-model="main.sortBy" type="radio"><br>
+      Reverse? <input type="checkbox" ng-model="main.asc"><br>
+  <div class="input-group">
+    <button class="btn btn-danger" ng-click="main.resetChoices()">Reset</button>
+    <button class="btn btn-primary" ng-click="main.buildChart()">Submit</button>
+  </div>
+    </fieldset>
     </div>
+  </form>
 </div>

@@ -27,31 +27,37 @@ h1 {
 }
 .dashboard {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: row;
+  margin-bottom: 80px;
 }
 .side-menu {
   background-color: #ccc;
-  padding: 2px;
-  display: flex;
+}
+.sort {
+
 }
 .controls {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
+  /*display: flex;*/
+  /*flex-wrap: wrap;*/
+  /*justify-content: center;*/
+  /*align-items: center;*/
 }
 fieldset {
-  margin: 15px;  
+  margin: 0 15px;
 }
 
 .btn {
   margin: 3px;
 }
 .chart {
-  width: 95%;
   margin-bottom: 20px;
+  min-width: 75%
 }
 
 @media screen and (min-width: 768px){
+  .dashboard {
+    margin-bottom: 0
+  }
 }
